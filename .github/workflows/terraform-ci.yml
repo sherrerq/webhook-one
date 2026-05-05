@@ -78,7 +78,7 @@ jobs:
     needs: security-scan
     # Corre en PRs (para que el reviewer vea el plan) y también en push a main
     # (para que apply reutilice ese plan exacto - evita el "plan drift").
-    if: github.event_name == 'pull_request' || (github.event_name == 'push' && github.ref == 'refs/heads/main')
+    if: github.event_name == 'pull_request' || (github.event_name == 'push' && github.ref == 'refs/heads/master')
     environment: aws-readonly   # Entorno de GitHub con aprobación opcional
 
     steps:
@@ -131,7 +131,7 @@ jobs:
     # Depende de plan: ahora plan también corre en push a main, así que apply
     # reutiliza el artefacto tfplan generado en este mismo run (sin plan drift).
     needs: [security-scan, terraform-plan]
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    if: github.event_name == 'push' && github.ref == 'refs/heads/master'
     environment: aws-production   # Requiere aprobación manual en GitHub
 
     steps:
