@@ -5,6 +5,7 @@
 # sola CMK de KMS basta para ejercer el pipeline de extremo a extremo y
 # demostrar que un módulo bien configurado es aceptado.
 #
+#
 # Sustituye este código por tu propia infraestructura cuando el pipeline esté
 # verde — el workflow scan/plan/apply seguirá funcionando sobre cualquier
 # código Terraform que pongas en este directorio.
